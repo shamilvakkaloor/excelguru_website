@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Credentials Database
     const credentials = {
+        'excelguru_offline': {
+            user: '123',
+            pass: '123',
+            link: 'index.html' // Redirect to home for now
+        },
+        'excelguru_workshop': {
+            user: '123',
+            pass: '123',
+            link: 'index.html' // Redirect to home for now
+        },
         'jamia_ainul_huda': {
             user: 'alihsan',
             pass: '123',
@@ -17,13 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pass: '123',
             link: 'index.html' // Redirect to home for now
         },
-        'mastere_skill': {
+        'mastered_skill': {
             user: 'mastered',
-            pass: '123',
-            link: 'index.html' // Redirect to home for now
-        },
-        'excelguru_workshop': {
-            user: '123',
             pass: '123',
             link: 'index.html' // Redirect to home for now
         }
