@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Credentials Database
     const credentials = {
+        'edublitz_learning': {
+            user: 'abc',
+            pass: '123',
+            link: 'index.html' // Redirect to home for now
+        },
         'excelguru_offline': {
             user: '123',
             pass: '123',
