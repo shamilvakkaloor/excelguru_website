@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'edublitz_learning': {
             user: 'abc',
             pass: '123',
-            link: 'index.html' // Redirect to home for now
+            link: 'https://drive.google.com/drive/folders/1mysSwjDo9v3PLydV3l_uJbbxIdWhqeNt?usp=sharing'
         },
         'excelguru_offline': {
             user: '123',
