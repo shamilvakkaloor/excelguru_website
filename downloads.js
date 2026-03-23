@@ -1,65 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const institutionSelect = document.getElementById('institution');
-    const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
     const errorMsg = document.getElementById('error-msg');
 
     // Credentials Database
-    const credentials = {
-        'edublitz_learning': {
-            user: 'abc',
-            pass: '123',
-            link: 'https://drive.google.com/drive/folders/1mysSwjDo9v3PLydV3l_uJbbxIdWhqeNt?usp=sharing'
-        },
-        'excelguru_offline': {
-            user: '123',
-            pass: '123',
-            link: 'index.html' // Redirect to home for now
-        },
-        'excelguru_workshop': {
-            user: '123',
-            pass: '123',
-            link: 'index.html' // Redirect to home for now
-        },
-        'jamia_ainul_huda': {
-            user: 'alihsan',
-            pass: '123',
-            link: 'https://drive.google.com/drive/folders/1nWuNueuFq80JcekpWhuYaw6UYGINrlgn?usp=sharing'
-        },
-        'jamia_ashariyya': {
-            user: 'cac',
-            pass: '123',
-            link: 'index.html' // Redirect to home for now
-        },
-        'mastered_skill': {
-            user: 'mastered',
-            pass: '123',
-            link: 'index.html' // Redirect to home for now
-        }
-    };
+    let credentials = {};
+
+    // Fetch and parse the CSV file
+    fetch('downloads_data.csv')
+        .then(response => response.text())
+        .then(csvText => {
+            const lines = csvText.split('\n');
+            // Skip the header (index 0)
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+
+                // Split by comma
+                const [name, pass, link] = line.split(',');
+
+                if (name && pass && link) {
+                    const id = 'inst_' + i;
+                    credentials[id] = {
+                        name: name.trim(),
+                        pass: pass.trim(),
+                        link: link.trim()
+                    };
+
+                    // Add to dropdown
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.textContent = name.trim();
+                    institutionSelect.appendChild(option);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error loading downloads data:', error);
+        });
 
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             const selectedInst = institutionSelect.value;
-            const inputUser = usernameInput.value.trim().toLowerCase(); // Case insensitive
             const inputPass = passwordInput.value.trim().toLowerCase(); // Case insensitive
 
-            if (!credentials[selectedInst]) {
+            if (!selectedInst || !credentials[selectedInst]) {
                 showError("Please select a valid institution.");
                 return;
             }
 
             const correctCreds = credentials[selectedInst];
 
-            if (inputUser === correctCreds.user && inputPass === correctCreds.pass) {
+            // Case insensitive match for password
+            if (inputPass === correctCreds.pass.toLowerCase()) {
                 // Successful Login
                 window.location.href = correctCreds.link;
             } else {
                 // Failed Login
-                showError("Invalid username or password.");
+                showError("Invalid password.");
             }
         });
     }
@@ -68,18 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMsg.textContent = message;
         errorMsg.style.display = 'block';
         // Shake animation could be added here
-        usernameInput.style.borderColor = '#ef4444';
         passwordInput.style.borderColor = '#ef4444';
 
         // Reset styles after interaction
-        usernameInput.addEventListener('input', resetError);
         passwordInput.addEventListener('input', resetError);
         institutionSelect.addEventListener('change', resetError);
     }
 
     function resetError() {
         errorMsg.style.display = 'none';
-        usernameInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
         passwordInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
     }
 });
