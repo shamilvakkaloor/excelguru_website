@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLA 2026 Dashboard | Excel Guru</title>
+    <meta name="description" content="Kerala Legislative Assembly Election 2026 Dashboard">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --kla-header: #4a235a;
+            --kla-stats: #27ae60;
+            --kla-ldf: #c0392b;
+            --kla-ldf-bg: #fadbd8;
+            --kla-udf: #2980b9;
+            --kla-udf-bg: #d6eaf8;
+            --kla-nda: #f39c12;
+            --kla-nda-bg: #fdebd0;
+            --kla-others: #7f8c8d;
+            --kla-others-bg: #f2f4f4;
+        }
+
+        .malayalam-font {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+        }
+
+        .dashboard-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            min-height: calc(100vh - 100px);
+        }
+
+        @media (max-width: 1400px) {
+            .dashboard-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+
+        .panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .panel-header {
+            background: var(--kla-header);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .panel-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        /* Forms */
+        .select-group {
+            margin-bottom: 1.5rem;
+        }
+        .select-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .select-box {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            background: #f9f9f9;
+        }
+
+        /* Constituency Info */
+        .const-title {
+            font-size: 2.5rem;
+            color: var(--kla-header);
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+        .const-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .data-table th, .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        .data-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 45%;
+        }
+        .data-table td {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .mla-history-table th {
+            background: #f9f9f9;
+            color: var(--text-dark);
+        }
+
+        /* MLA Card */
+        .mla-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .mla-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid var(--kla-header);
+            background: #eee;
+        }
+        .mla-details h3 {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+        .mla-details p {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-muted);
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+        }
+        .badge.ldf { background: var(--kla-ldf); }
+        .badge.udf { background: var(--kla-udf); }
+        .badge.nda { background: var(--kla-nda); }
+        .badge.others { background: var(--kla-others); }
+
+        /* Election Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .stat-box {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--kla-stats);
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Candidates List */
+        .candidate-card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--radius-sm);
+            gap: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .candidate-card.ldf { background: var(--kla-ldf-bg); border-left: 4px solid var(--kla-ldf); }
+        .candidate-card.udf { background: var(--kla-udf-bg); border-left: 4px solid var(--kla-udf); }
+        .candidate-card.nda { background: var(--kla-nda-bg); border-left: 4px solid var(--kla-nda); }
+        .candidate-card.others { background: var(--kla-others-bg); border-left: 4px solid var(--kla-others); }
+        
+        .cand-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: white;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cand-info {
+            flex-grow: 1;
+        }
+        .cand-name-en {
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        .cand-name-ml {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .cand-meta {
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            color: #666;
+        }
+        .cand-symbol {
+            font-size: 1.5rem;
+            text-align: center;
+            width: 40px;
+        }
+
+        /* Charts */
+        .chart-container {
+            margin-bottom: 2rem;
+            height: 250px;
+            width: 100%;
+        }
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+        
+        /* Top Navigation specific for dashboard */
+        .dash-nav {
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .dash-nav a {
+            text-decoration: none;
+            color: var(--kla-header);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f5f7fa;">
+    
+    <div class="dash-nav">
+        <a href="library.html" style="display: flex; align-items: center; gap: 0.5rem;">
+            <span>← Back to Library</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <img src="assets/logo.png" alt="Excel Guru" style="height: 30px;">
+            <span style="font-weight: 700; font-size: 1.2rem; color: var(--text-dark);">KLA 2026 Analytics Dashboard</span>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <!-- PANEL 1: CONSTITUENCY SELECTOR -->
+        <div class="panel">
+            <div class="panel-header">1. Select Constituency</div>
+            <div class="panel-body">
+                <div class="select-group">
+                    <label for="districtSelect">District</label>
+                    <select id="districtSelect" class="select-box">
+                        <option value="">-- Select District --</option>
+                    </select>
+                </div>
+                
+                <div class="select-group">
+                    <label for="constSelect">Constituency</label>
+                    <select id="constSelect" class="select-box" disabled>
+                        <option value="">-- Select Constituency --</option>
+                    </select>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
+
+                <div id="constInfo" style="display: none;">
+                    <h2 class="const-title malayalam-font" id="constNameMl"></h2>
+                    <div class="const-subtitle" id="constNameEn"></div>
+
+                    <table class="data-table">
+                        <tbody>
+                            <tr>
+                                <th>Parliament Segment</th>
+                                <td id="valParliament"></td>
+                            </tr>
+                            <tr>
+                                <th>Reservation</th>
+                                <td id="valReservation"></td>
+                            </tr>
+                            <tr>
+                                <th>Male Voters</th>
+                                <td id="valMaleVoters"></td>
+                            </tr>
+                            <tr>
+                                <th>Female Voters</th>
+                                <td id="valFemaleVoters"></td>
+                            </tr>
+                            <tr>
+                                <th>Total Voters</th>
+                                <td id="valTotalVoters"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Last 3 MLAs</h3>
+                    <table class="data-table mla-history-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>MLA Name</th>
+                                <th>Alliance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lastMlasBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: CURRENT MLA -->
+        <div class="panel">
+            <div class="panel-header">2. Current MLA Info</div>
+            <div class="panel-body" id="mlaInfo" style="display: none;">
+                
+                <div class="mla-profile">
+                    <!-- Photo placeholder or actual -->
+                    <img src="" id="mlaPhoto" class="mla-photo" alt="MLA Photo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20fill%3D%22%23dddddd%22%20width%3D%22120%22%20height%3D%22120%22%2F%3E%3Ctext%20fill%3D%22%23999999%22%20font-family%3D%22sans-serif%22%20font-size%3D%2216%22%20dy%3D%226.5%22%20font-weight%3D%22bold%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20text-anchor%3D%22middle%22%3ENo%20Photo%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                    <div class="mla-details">
+                        <h3 id="mlaName"></h3>
+                        <p>Age: <span id="mlaAge"></span> | Party: <span id="mlaParty"></span></p>
+                        <span id="mlaAlliance" class="badge"></span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid var(--kla-stats); padding-bottom: 0.5rem;">2021 Election Stats</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Total Votes</div>
+                        <div class="stat-value" id="statTotalVotes"></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Total Polled</div>
+                        <div class="stat-value" id="statPolled"></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Votes Received</div>
+                        <div class="stat-value" id="statReceived"></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Margin</div>
+                        <div class="stat-value" id="statMargin" style="color: var(--kla-stats);"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 1rem; padding: 1rem; background: #fff3e0; border-left: 4px solid #ff9800; border-radius: var(--radius-sm);">
+                    <div class="stat-label">Runner-Up</div>
+                    <div class="stat-value" id="statRunnerUpName" style="font-size: 1.1rem; margin-bottom: 0.25rem;"></div>
+                    <div style="font-size: 0.9rem; color: #666;">
+                        Party: <span id="statRunnerUpParty"></span> | Votes: <strong id="statRunnerUpVotes"></strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PANEL 3: CANDIDATES 2026 -->
+        <div class="panel">
+            <div class="panel-header">3. Candidates of KLA 2026</div>
+            <div class="panel-body" id="candidatesList" style="display: none; padding: 1rem;">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- PANEL 4: CHARTS -->
+        <div class="panel">
+            <div class="panel-header">4. Election Charts</div>
+            <div class="panel-body" id="chartsContainer" style="display: none;">
+                
+                <div class="chart-container">
+                    <div class="chart-title">Assembly Election Vote Share</div>
+                    <canvas id="assemblyChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">General Election Vote Share</div>
+                    <canvas id="generalChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-title">Combined Trend (All Elections)</div>
+                    <canvas id="trendChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="kla2026-data.js"></script>
+    <script src="kla2026-dashboard.js"></script>
+</body>
+
+</html>

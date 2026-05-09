@@ -1,0 +1,144 @@
+
+--- Sheet: About ---
+0,1
+,
+,Kerala Assembly Election 2026: Master Analytics Suite
+,
+,Developed By
+,Shamil Vakkaloor
+,"Founder, excelguru.co.in | Excel Expert & Data Enthusiast"
+,
+,Project Overview
+,"This comprehensive electoral database provides a 360-degree view of all 140 Legislative Assembly Constituencies in Kerala. It is designed to track historical performance, voter demographics, and current candidate profiles for the 2026 Kerala Legislative Assembly (KLA) elections. While the dashboard allows for granular filtering—such as viewing the Indian Union Muslim League (IUML) strongholds in the Malappuram district—it is a statewide tool built for comparative political analysis."
+,
+,Data Source & Attribution
+,"The data driving this dashboard is sourced from the Open Data Kerala (ODK) initiative, specifically the KLA 2026 Project."
+,Source: Open Data Kerala Election Portal
+,"Details: This project is a community-driven initiative that curates and democratizes election data, including candidate registries, alliance manifestos, and historical voter statistics. We acknowledge their effort in promoting transparency and supporting informed public participation through open data principles."
+,
+
+--- Sheet: Dashboard ---
+0,1,2,3,4,5,6,7,8,9,10
+,,,,,,,,,,
+,,,,,,,,,, 
+,District,Kasaragod,,,,,LDF,,, 
+,Constituency,Manjeshwaram,,,A K M Ashraf,,,,, 
+,,,,,Age: 43,,,,K. R. Jayananda, 
+,,,,,Party: IUML,,,,Age: 58 - CPI(M), 
+,,,,,UDF,,,,, 
+,Parliament,Kasaragod,,,,,UDF,,, 
+,Male Voters,115801,,Total Votes,224279,,,,, 
+,Female Voters,114312,,Total Polled,172426 - 76.88%,,,,A. K. M. Ashraf, 
+,Total Voters,230113,,Votes Received,65758,,,,Age: 48 - IUML, 
+,Resarvation,GEN,,Votes Percentage,0.3813693990465475,,,,, 
+,,,,Margin,745,,NDA,,, 
+,2021,A K M Ashraf - UDF, ,RunnerUP,K Surendran,,,,, 
+,2016,P B Abdul Razak - UDF, ,RunnerUP Votes,65013,,,,K. Surendran, 
+
+--- Sheet: Candidates ---
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,number,name,nameMalayalam,district,districtMalayalam,districtQid,qid,reservation,pollingBooths,votersMale,votersFemale,votersTransgender,votersTotal,candidates__alliance,candidates__party,candidates__name,candidates__malayalam,candidates__wikidata,candidates__gender,candidates__age,candidates__candidateId,candidates__photo,candidates__reference,candidates__symbol,candidates__archiveUrl,candidates__aparanTag,candidates__sittingMLA,candidates__mlaTrack,candidates__eduTag,candidates__ballotOrder,fightIndex,pic
+,1,Manjeshwaram,മഞ്ചേശ്വരം,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13113782,,229,115801,114312,0,230113,UDF,IUML,A. K. M. Ashraf,എ. കെ. എം. അഷ്റഫ്,Q106687787,male,48,2644,AKMAS-2026-20260325102628.jpg,26kla141,Ladder,mlat.26kla141_kochi.akmashraf,,YES,https://mlatrack.com/15kla/profiles/mlas/a_k_m_ashraf_m,Higher Secondary,1,68.8,
+,1,,,,,,,,,,,,,LDF,CPI(M),K. R. Jayananda,കെ. ആർ. ജയാനന്ദ,,male,58,684,JAYAN-2026-20260324054718.jpg,26kla001,"Hammer, Sickle and Star",mlat.26kla001_thrithala.krjayananda,,,,High School,2,,
+,1,,,,,,,,,,,,,Others,BSP,Sanjeeva,സഞ്ജീവ,,male,55,2162,SANJE-2026-20260324055326.jpg,26kla972,Elephant,mlat.26kla972_muvattupuzha.sanjeeva,,,,,3,,
+,1,,,,,,,,,,,,,NDA,BJP,K. Surendran,കെ. സുരേന്ദ്രൻ,Q25587200,male,56,2840,KSURE-2026-20260324053843.jpg,26kla281,Lotus,mlat.26kla281_manjeshwaram.ksurendran,,,,Degree,4,,
+,1,,,,,,,,,,,,,Others,,Kannur Abdulla Master,കണ്ണൂർ അബ്ദുള്ള മാസ്റ്റർ,,male,66,738,ABDUL-2026-20260324053104.jpg,26kla812,Gas Cylinder,mlat.26kla812_kannur.kannurabdullamaster,,,,,5,,
+,1,,,,,,,,,,,,,Others,,Abdul Latheef I,അബ്ദുൾ ലത്തീഫ് ഐ,,male,38,3319,ABDUL-2026-20260323072045.jpg,26kla696,Television,mlat.26kla696_udma.abdullatheefi,,,,,6,,
+,1,,,,,,,,,,,,,Others,,Gean Lavina Monteiro,ഗീൻ ലാവിന മൊണ്ടീറോ,,female,56,3816,GEANL-2026-20260324052456.jpg,26kla784,Battery Torch,mlat.26kla784_angamaly.geanlavinamonteiro,,,,,7,,
+,1,,,,,,,,,,,,,Others,,John D' Souza,ജോൺ ഡിസൂസ,,male,63,2064,JOHND-2026-20260324054042.jpg,26kla802,Truck,mlat.26kla802_devikulam.johndsouza,,,,,8,,
+,1,,,,,,,,,,,,,Others,,Mohammed Ashraf,മുഹമ്മദ് അഷ്‌റഫ്,,male,43,3873,MOHAM-2026-20260324052952.jpg,26kla853,Bat,mlat.26kla853_chadayamangalam.mohammedashraf,26kla141,,,,9,,
+,1,,,,,,,,,,,,,Others,,Mohammed Ashraf K A,മുഹമ്മദ് അഷ്‌റഫ് കെ എ,,male,51,3723,MOHAM-2026-20260324054222.jpg,26kla854,Gas Stove,mlat.26kla854_chirayinkeezhu.mohammedashrafka,26kla141,,,,10,,
+,1,,,,,,,,,,,,,Others,,D Surendran Nair,ഡി സുരേന്ദ്രൻ നായർ,,male,63,1915,DSURE-2026-20260325103644.jpg,26kla774,Diamond,mlat.26kla774_kottakkal.dsurendrannair,26kla281,,,,11,,
+,2,Kasaragod,കാസർഗോഡ്,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13111222,,218,105524,105399,0,210923,NDA,BJP,Ashwini M.L.,അശ്വിനി എം. എൽ.,,female,40,1899,ASHWI-2026-20260323045231.jpg,26kla282,Lotus,mlat.26kla282_ollur.ashwiniml,,,,Diploma,1,48.7,
+,2,,,,,,,,,,,,,UDF,IUML,Kallatra Mahin Haji,കല്ലട്ര മാഹിൻ ഹാജി,,male,62,1592,MAHIN-2026-20260323032302.jpg,26kla142,Ladder,mlat.26kla142_thodupuzha.kallatramahin,,,,Degree,2,,
+
+--- Sheet: Symbols ---
+0,1,2,3,4
+,,,,
+,S.N,Symbol,Party,Image
+,1,Air Conditioner,,
+,2,Almirah,,
+,3,Auto Rikshaw,KEC,
+,4,Baby Walker,BJP,
+,5,Balloon,,
+,6,Bangles,,
+,7,Bat,,
+,8,Batsman,,
+,9,Battery Torch,,
+,10,Bead Necklace,,
+,11,Belt,,
+,12,Bench,,
+,13,Bicycle Pump,,
+
+--- Sheet: Constituencies ---
+0,1,2,3,4,5,6,7,8,9,10,11,12,13
+,,,,,,,,,,,,,
+,Number,Constituency,Constituency_Ml,Loksabha,District,District_Ml,District_qid,qid,Reservation,Male_Voters,Femal_Voters,Total_Voters,Polling Booths
+,1,Manjeshwaram,മഞ്ചേശ്വരം,Kasaragod,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13113782,GEN,115801,114312,230113,229
+,2,Kasaragod,കാസർഗോഡ്,Kasaragod,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13111222,GEN,105524,105399,210923,218
+,3,Udma,ഉദുമ,Kasaragod,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13110513,GEN,112166,116342,228512,237
+,4,Kanhangad,കാഞ്ഞങ്ങാട്,Kasaragod,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q13111113,GEN,109008,114966,223980,239
+,5,Thrikaripur,തൃക്കരിപ്പൂർ,Kasaragod,Kasaragod,കാസർഗോഡ് ജില്ല,Q1419703,Q16137696,GEN,102044,108044,210090,218
+,6,Payyanur,പയ്യന്നൂർ,Kasaragod,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q17379122,GEN,91006,97926,188935,192
+,7,Kalliasseri,കല്ല്യാശ്ശേരി,Kasaragod,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q13111077,GEN,97648,106147,203796,184
+,8,Taliparamba,തളിപ്പറമ്പ്,Kannur,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q17379268,GEN,111926,120353,232280,233
+,9,Irikkur,ഇരിക്കൂർ,Kannur,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q13110432,GEN,98862,100464,199326,214
+,10,Azhikode,അഴീക്കോട്,Kannur,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q13110133,GEN,89967,98280,188250,185
+,11,Kannur,കണ്ണൂർ,Kannur,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q16137348,GEN,87817,94865,182682,179
+,12,Dharmadom,ധർമ്മടം,Kannur,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q13112766,GEN,98049,107950,206000,198
+,13,Thalassery,തലശ്ശേരി,Vadakara,Kannur,കണ്ണൂർ ജില്ല,Q2980652,Q7709532,GEN,89133,96707,185841,189
+
+--- Sheet: Others ---
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17
+,,,,,,,,,,,,,,,,,
+,Parliament_Const,Parliament_Const_ML,,Kasaragod,Kannur,Wayanad,Kozhikode,Malappuram,Palakkad,Thrissur,Ernakulam,Idukki,Kottayam,Alappuzha,Pathanamthitta,Kollam,Thiruvananthapuram
+,Kasaragod,കാസർഗോഡ്,,Manjeshwaram,Payyanur,Mananthavady,Vatakara,Kondotty,Thrithala,Chelakkara,Perumbavoor,Devikulam,Pala,Aroor,Thiruvalla,Karunagappally,Varkala
+,Kannur,കണ്ണൂർ,,Kasaragod,Kalliasseri,Sulthan Bathery,Kuttiady,Eranad,Pattambi,Kunnamkulam,Angamaly,Udumbanchola,Kaduthuruthy,Cherthala,Ranni,Chavara,Attingal
+,Vadakara,വടകര,,Udma,Taliparamba,Kalpetta,Nadapuram,Nilambur,Shornur,Guruvayur,Aluva,Thodupuzha,Vaikom,Alappuzha,Aranmula,Kunnathur,Chirayinkeezhu
+,Wayanad,വയനാട്,,Kanhangad,Irikkur,,Koyilandy,Wandoor,Ottapalam,Manalur,Kalamassery,Idukki,Ettumanoor,Ambalappuzha,Konni,Kottarakkara,Nedumangad
+,Kozhikode,കോഴിക്കോട്,,Thrikaripur,Azhikode,,Perambra,Manjeri,Kongad,Wadakkanchery,Paravur,Peerumade,Kottayam,Kuttanad,Adoor,Pathanapuram,Vamanapuram
+,Malappuram,മലപ്പുറം,,,Kannur,,Balussery,Perinthalmanna,Mannarkkad,Ollur,Vypin,,Puthuppally,Haripad,,Punalur,Kazhakkoottam
+,Ponnani,പൊന്നാനി,,,Dharmadom,,Elathur,Mankada,Malampuzha,Thrissur,Kochi,,Changanassery,Kayamkulam,,Chadayamangalam,Vattiyoorkavu
+,Palakkad,പാലക്കാട്,,,Thalassery,,Kozhikode North,Malappuram,Palakkad,Nattika,Thrippunithura,,Kanjirappally,Mavelikara,,Kundara,Thiruvananthapuram
+,Alathur,ആലത്തൂർ,,,Kuthuparamba,,Kozhikode South,Vengara,Tarur,Kaipamangalam,Ernakulam,,Poonjar,Chengannur,,Kollam,Nemom
+,Thrissur,തൃശ്ശൂർ,,,Mattanur,,Beypore,Vallikkunnu,Chittur,Irinjalakuda,Thrikkakara,,,,,Eravipuram,Aruvikkara
+,Chalakudy,ചാലക്കുടി,,,Peravoor,,Kunnamangalam,Tirurangadi,Nenmara,Puthukkad,Kunnathunad,,,,,Chathannoor,Parassala
+,Ernakulam,എറണാകുളം,,,,,Koduvally,Tanur,Alathur,Chalakudy,Piravom,,,,,,Kattakkada
+,Kottayam,കോട്ടയം,,,,,Thiruvambady,Tirur,,Kodungallur,Muvattupuzha,,,,,,Kovalam
+
+--- Sheet: Vote History ---
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24
+,,,,,,,,,,,,,,,,,,,,,,,,
+,QID,Number,constituency,Election,Year,ParliamentaryConstituency,Winner_Name,Winner_Party,Winner__Alliance,Winner_Votes,RunnerUp__Name,RunnerUp_Party,RunnerUp__Alliance,RunnerUp_Votes,RunnerUp2__Name,RunnerUp2__Party,RunnerUp2_Alliance,RunnerUp2_Votes,Margin,AllianceVotes__LDF,AllianceVotes__UDF,AllianceVotes__NDA,AllianceVotes__Others,TotalVotes
+,Q13113782,1,Manjeshwaram,niyamasabha,2011,Kasaragod,P B Abdul Razak,IUML,UDF,49817,K Surendran,BJP,NDA,43989,Adv. C H Kunhambu,CPI(M),LDF,35067,5828,35067,49817,43989,4100,132973
+,Q13113782,1,Manjeshwaram,niyamasabha,2016,Kasaragod,P B Abdul Razak,IUML,UDF,56870,K Surendran,BJP,NDA,56781,Adv. C.H.Kunhambu,CPI(M),LDF,42565,89,42565,56870,56781,2022,158238
+,Q13113782,1,Manjeshwaram,niyamasabha,2021,Kasaragod,A K M Ashraf,IUML,UDF,65758,K Surendran,BJP,NDA,65013,V V Rameshan,CPI(M),LDF,40639,745,40639,65758,65013,629,172039
+,Q13113782,1,Manjeshwaram,loksabha,2014,Kasaragod,Adv. T Siddique,INC,UDF,52459,K Surendran,BJP,NDA,46631,P Karunakaran,CPI(M),LDF,29433,5828,29433,52459,46631,6521,135044
+,Q13113782,1,Manjeshwaram,loksabha,2019,Kasaragod,Rajmohan Unnithan,INC,UDF,68217,Ravisha Thanthri Kuntar,BJP,NDA,57104,K. P. Sathishchandran,CPI(M),LDF,32796,11113,32796,68217,57104,2161,160278
+,Q13113782,1,Manjeshwaram,loksabha,2024,Kasaragod,Rajmohan Unnithan,INC,UDF,74437,M.L Ashwini,BJP,NDA,57179,M.V Balakrishnan Master,CPI(M),LDF,30156,17258,30156,74437,57179,910,162682
+,Q13111222,2,Kasaragod,niyamasabha,2011,Kasaragod,N.A.Nellikkunnu,IUML,UDF,53068,Jayalakshmi N Bhat,BJP,NDA,43330,Azeez Kadappuram,INL,LDF,16467,9738,16467,53068,43330,4166,117031
+,Q13111222,2,Kasaragod,niyamasabha,2016,Kasaragod,N A Nellikkunnu,IUML,UDF,64727,Ravisha Thantri Kuntar,BJP,NDA,56120,Dr. A A Ameen,INL,LDF,21615,8607,21615,64727,56120,1626,144088
+,Q13111222,2,Kasaragod,niyamasabha,2021,Kasaragod,N A Nellikkunnu,IUML,UDF,63296,Adv K Shreekanth,BJP,NDA,50395,M A Latheef,INL,LDF,28323,12901,28323,63296,50395,1847,143861
+,Q13111222,2,Kasaragod,loksabha,2014,Kasaragod,Adv. T Siddique,INC,UDF,54426,K Surendran,BJP,NDA,41236,P Karunakaran,CPI(M),LDF,22827,13190,22827,54426,41236,5757,124246
+,Q13111222,2,Kasaragod,loksabha,2019,Kasaragod,Rajmohan Unnithan,INC,UDF,69790,Ravisha Thanthri Kuntar,BJP,NDA,46630,K. P. Sathishchandran,CPI(M),LDF,28567,23160,28567,69790,46630,1678,146665
+,Q13111222,2,Kasaragod,loksabha,2024,Kasaragod,Rajmohan Unnithan,INC,UDF,73407,M.L Ashwini,BJP,NDA,47032,M.V Balakrishnan Master,CPI(M),LDF,26162,26375,26162,73407,47032,776,147377
+,Q13110513,3,Udma,niyamasabha,2011,Kasaragod,K.Kunhiraman,CPI(M),LDF,61646,Adv. C K Sreedharan,INC,UDF,50266,Sunitha Prasanth,BJP,NDA,13073,11380,61646,50266,13073,3641,128626
+
+--- Sheet: Current MLA ---
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+,,,,,,,,,,,,,,
+,Number,Constituency,District,Member,Party,Alliance,Age,Picture,Total Voters,Valid Votes,Valid_Vote_Percentage,Member_Votes,Member_Perc,Margin
+,1,Manjeshwaram,Kasaragod,A K M Ashraf,IUML,UDF,43,,224279,172426,0.7688013590215758,65758,0.3813693990465475,745
+,2,Kasaragod,Kasaragod,N A Nellikkunnu,IUML,UDF,67,,203894,144500,0.7087015802328661,63296,0.43803460207612455,12901
+,3,Udma,Kasaragod,C H Kunhambu,CPM,LDF,61,,218907,165341,0.7553024800486051,78664,0.47576826074597345,13322
+,4,Kanhangad,Kasaragod,E Chandrashekaran,CPI,LDF,72,,223849,166835,0.7453015202212205,84615,0.5071777504720233,27139
+,5,Thrikaripur,Kasaragod,M Rajagopalan,CPM,LDF,60,,208946,160408,0.7677007456472007,86151,0.5370742107625555,26137
+,6,Payyanur,Kannur,T  I Madhusoodanan,CPM,LDF,61,,189803,149945,0.7900033192309921,93695,0.6248624495648405,49780
+,7,Kalliasseri,Kannur,M Vijin,CPM,LDF,31,,190531,145585,0.7641013798279545,88252,0.6061888243981179,44393
+,8,Taliparamba,Kannur,M V Govindan Master,CPM,LDF,69,,220054,178112,0.8094013287647578,92870,0.5214134926338484,22689
+,9,Irikkur,Kannur,Adv. Sajeev Joseph,INC,UDF,48,,201660,152516,0.7563026876921551,76764,0.5033176847019329,10010
+,10,Azhikode,Kannur,K V Sumesh,CPM,LDF,42,,186027,144897,0.7789030624586754,65794,0.4540742734494158,6141
+,11,Kannur,Kannur,Ramachandran Kadannappalli,C(S),LDF,76,,178928,134089,0.7494019940981848,60313,0.44979826831432856,1745
+,12,Dharmadom,Kannur,Pinarayi Vijayan,CPM,LDF,77,,199759,160247,0.8022016529918552,95522,0.5960922825388307,50123
+,13,Thalassery,Kannur,Adv. A. N. Shamseer,CPM,LDF,44,,179860,132989,0.7394028688980318,81810,0.6151636601523435,36801
