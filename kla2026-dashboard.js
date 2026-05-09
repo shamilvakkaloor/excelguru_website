@@ -134,16 +134,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('statRunnerUpName').textContent = h2021.runnerup_name;
                 document.getElementById('statRunnerUpParty').textContent = h2021.runnerup_party;
                 document.getElementById('statRunnerUpVotes').textContent = formatNumber(h2021.runnerup_votes);
-                
-                // Let's also look for mla photo inside 2026 candidates if name is similar
-                const candMatch = cands.find(c => c.name.includes(h2021.winner_name.split(' ')[0]));
-                if (candMatch && candMatch.photo) {
-                    mlaPhoto = candMatch.photo;
-                }
             } else {
                 document.getElementById('statRunnerUpName').textContent = 'N/A';
                 document.getElementById('statRunnerUpParty').textContent = 'N/A';
                 document.getElementById('statRunnerUpVotes').textContent = 'N/A';
+            }
+
+            // Robust logic to find MLA photo from 2026 Candidates
+            function normalizeName(name) {
+                return name.toLowerCase().replace(/adv\.|dr\.|prof\.|sri\.|smt\./g, '').replace(/[\.\s]/g, '');
+            }
+
+            const mlaNorm = normalizeName(mData.member);
+            let candMatch = cands.find(c => {
+                const candNorm = normalizeName(c.name);
+                return (candNorm.includes(mlaNorm) || mlaNorm.includes(candNorm)) && c.party === mData.party;
+            });
+            
+            // Fallback: match by last name & party
+            if (!candMatch) {
+                const mlaParts = mData.member.split(' ');
+                const mlaLastName = mlaParts[mlaParts.length - 1].toLowerCase();
+                candMatch = cands.find(c => c.name.toLowerCase().includes(mlaLastName) && c.party === mData.party);
+            }
+
+            if (candMatch && candMatch.photo) {
+                mlaPhoto = candMatch.photo;
             }
 
             if (mlaPhoto) {
