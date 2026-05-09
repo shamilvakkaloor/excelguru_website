@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatNumber = (num) => new Intl.NumberFormat('en-IN').format(num);
     const formatPercent = (dec) => (dec * 100).toFixed(2) + '%';
 
+    // Set Chart.js defaults for dark theme
+    Chart.defaults.color = '#94a3b8'; // text-muted
+    Chart.defaults.scale.grid.color = 'rgba(255, 255, 255, 0.05)';
+
     // Populate Districts
     if (klaData && klaData.districts) {
         klaData.districts.sort().forEach(dist => {
