@@ -277,9 +277,9 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: asyData.map(h => h.year.toString()),
                 datasets: [
-                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4 },
-                    { label: 'UDF', data: asyData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4 },
-                    { label: 'NDA', data: asyData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4 }
+                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
+                    { label: 'UDF', data: asyData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
+                    { label: 'NDA', data: asyData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 }
                 ]
             },
             options: commonChartOptions
@@ -291,9 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: genData.map(h => h.year.toString()),
                 datasets: [
-                    { label: 'LDF', data: genData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4 },
-                    { label: 'UDF', data: genData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4 },
-                    { label: 'NDA', data: genData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4 }
+                    { label: 'LDF', data: genData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
+                    { label: 'UDF', data: genData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
+                    { label: 'NDA', data: genData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 }
                 ]
             },
             options: commonChartOptions
