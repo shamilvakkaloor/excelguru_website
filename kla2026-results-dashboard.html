@@ -372,6 +372,13 @@
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             height: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-canvas-wrapper {
+            flex: 1;
+            min-height: 0;
             position: relative;
         }
 
@@ -472,19 +479,19 @@
                 <div class="charts-grid">
                     <div class="chart-container">
                         <div class="chart-title">Assembly Elections Trend</div>
-                        <div style="height: calc(100% - 2rem);"><canvas id="assemblyTrendChart"></canvas></div>
+                        <div class="chart-canvas-wrapper"><canvas id="assemblyTrendChart"></canvas></div>
                     </div>
                     <div class="chart-container">
                         <div class="chart-title">Combined Trend (All Elections)</div>
-                        <div style="height: calc(100% - 2rem);"><canvas id="trendChart"></canvas></div>
+                        <div class="chart-canvas-wrapper"><canvas id="trendChart"></canvas></div>
                     </div>
                     <div class="chart-container">
                         <div class="chart-title">Assembly Elections History</div>
-                        <div style="height: calc(100% - 2rem);"><canvas id="assemblyChart"></canvas></div>
+                        <div class="chart-canvas-wrapper"><canvas id="assemblyChart"></canvas></div>
                     </div>
                     <div class="chart-container">
                         <div class="chart-title">General Elections History</div>
-                        <div style="height: calc(100% - 2rem);"><canvas id="generalChart"></canvas></div>
+                        <div class="chart-canvas-wrapper"><canvas id="generalChart"></canvas></div>
                     </div>
                 </div>
 
