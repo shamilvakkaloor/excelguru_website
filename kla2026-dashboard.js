@@ -189,9 +189,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (generalChartInstance) generalChartInstance.destroy();
         if (trendChartInstance) trendChartInstance.destroy();
 
-        const ldfColor = '#c0392b';
-        const udfColor = '#2980b9';
-        const ndaColor = '#f39c12';
+        const ldfColor = '#ef4444';
+        const udfColor = '#3b82f6';
+        const ndaColor = '#f59e0b';
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                    titleColor: '#f8fafc',
+                    bodyColor: '#cbd5e1',
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 1,
+                    padding: 10,
+                    boxPadding: 4
+                },
+                legend: {
+                    labels: { color: '#94a3b8', font: { family: "'Outfit', sans-serif", size: 13 } }
+                }
+            },
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8', font: { family: "'Outfit', sans-serif" } }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#94a3b8', font: { family: "'Outfit', sans-serif" } }
+                }
+            }
+        };
 
         // Assembly Chart
         const asyData = history.filter(h => h.election === 'niyamasabha').sort((a, b) => a.year - b.year);
@@ -200,15 +234,12 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: asyData.map(h => h.year.toString()),
                 datasets: [
-                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), backgroundColor: ldfColor },
-                    { label: 'UDF', data: asyData.map(h => h.udf_votes), backgroundColor: udfColor },
-                    { label: 'NDA', data: asyData.map(h => h.nda_votes), backgroundColor: ndaColor }
+                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), backgroundColor: ldfColor, borderRadius: 4, borderSkipped: false },
+                    { label: 'UDF', data: asyData.map(h => h.udf_votes), backgroundColor: udfColor, borderRadius: 4, borderSkipped: false },
+                    { label: 'NDA', data: asyData.map(h => h.nda_votes), backgroundColor: ndaColor, borderRadius: 4, borderSkipped: false }
                 ]
             },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true } }
-            }
+            options: commonOptions
         });
 
         // General Chart
@@ -218,15 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: genData.map(h => h.year.toString()),
                 datasets: [
-                    { label: 'LDF', data: genData.map(h => h.ldf_votes), backgroundColor: ldfColor },
-                    { label: 'UDF', data: genData.map(h => h.udf_votes), backgroundColor: udfColor },
-                    { label: 'NDA', data: genData.map(h => h.nda_votes), backgroundColor: ndaColor }
+                    { label: 'LDF', data: genData.map(h => h.ldf_votes), backgroundColor: ldfColor, borderRadius: 4, borderSkipped: false },
+                    { label: 'UDF', data: genData.map(h => h.udf_votes), backgroundColor: udfColor, borderRadius: 4, borderSkipped: false },
+                    { label: 'NDA', data: genData.map(h => h.nda_votes), backgroundColor: ndaColor, borderRadius: 4, borderSkipped: false }
                 ]
             },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true } }
-            }
+            options: commonOptions
         });
 
         // Combined Trend Chart
@@ -236,15 +264,12 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: allData.map(h => h.year.toString() + (h.election === 'loksabha' ? ' (LS)' : '')),
                 datasets: [
-                    { label: 'LDF', data: allData.map(h => h.ldf_votes), borderColor: ldfColor, tension: 0.1, fill: false },
-                    { label: 'UDF', data: allData.map(h => h.udf_votes), borderColor: udfColor, tension: 0.1, fill: false },
-                    { label: 'NDA', data: allData.map(h => h.nda_votes), borderColor: ndaColor, tension: 0.1, fill: false }
+                    { label: 'LDF', data: allData.map(h => h.ldf_votes), borderColor: ldfColor, backgroundColor: ldfColor, tension: 0.4, borderWidth: 3, pointRadius: 4, pointHoverRadius: 6, pointBackgroundColor: '#1e293b' },
+                    { label: 'UDF', data: allData.map(h => h.udf_votes), borderColor: udfColor, backgroundColor: udfColor, tension: 0.4, borderWidth: 3, pointRadius: 4, pointHoverRadius: 6, pointBackgroundColor: '#1e293b' },
+                    { label: 'NDA', data: allData.map(h => h.nda_votes), borderColor: ndaColor, backgroundColor: ndaColor, tension: 0.4, borderWidth: 3, pointRadius: 4, pointHoverRadius: 6, pointBackgroundColor: '#1e293b' }
                 ]
             },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: { y: { beginAtZero: true } }
-            }
+            options: commonOptions
         });
 
     }
