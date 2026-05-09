@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TAB 1: CONSTITUENCY RESULTS ---
     const districtSelect = document.getElementById('districtSelect');
     const constSelect = document.getElementById('constSelect');
-    let assemblyTrendChartInst, trendChartInst, asyChartInst, genChartInst;
+    let assemblyTrendChartInst, trendChartInst;
 
     klaResultsData.districts.sort().forEach(dist => {
         const opt = document.createElement('option');
@@ -243,8 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderCharts(res2026, hist) {
         if (assemblyTrendChartInst) assemblyTrendChartInst.destroy();
         if (trendChartInst) trendChartInst.destroy();
-        if (asyChartInst) asyChartInst.destroy();
-        if (genChartInst) genChartInst.destroy();
 
         let aV = { LDF:0, UDF:0, NDA:0 };
         res2026.forEach(c => {
@@ -271,33 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             options: commonChartOptions
         });
 
-        // 2. Assembly Elections History Chart (Bar, includes 2026)
-        asyChartInst = new Chart(document.getElementById('assemblyChart'), {
-            type: 'bar',
-            data: {
-                labels: asyData.map(h => h.year.toString()),
-                datasets: [
-                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
-                    { label: 'UDF', data: asyData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
-                    { label: 'NDA', data: asyData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 }
-                ]
-            },
-            options: commonChartOptions
-        });
 
-        const genData = hist.filter(h => h.election === 'loksabha').sort((a, b) => a.year - b.year);
-        genChartInst = new Chart(document.getElementById('generalChart'), {
-            type: 'bar',
-            data: {
-                labels: genData.map(h => h.year.toString()),
-                datasets: [
-                    { label: 'LDF', data: genData.map(h => h.ldf_votes), backgroundColor: colors.LDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
-                    { label: 'UDF', data: genData.map(h => h.udf_votes), backgroundColor: colors.UDF, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 },
-                    { label: 'NDA', data: genData.map(h => h.nda_votes), backgroundColor: colors.NDA, borderRadius: 4, barPercentage: 0.5, categoryPercentage: 0.6 }
-                ]
-            },
-            options: commonChartOptions
-        });
 
         const allData = [...hist].sort((a, b) => a.year - b.year);
         // Add 2026 to Combined Trend
