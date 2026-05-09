@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TAB 1: CONSTITUENCY RESULTS ---
     const districtSelect = document.getElementById('districtSelect');
     const constSelect = document.getElementById('constSelect');
-    let chart2026Inst, trendChartInst, asyChartInst, genChartInst;
+    let assemblyTrendChartInst, trendChartInst, asyChartInst, genChartInst;
 
     klaResultsData.districts.sort().forEach(dist => {
         const opt = document.createElement('option');
@@ -241,31 +241,37 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function renderCharts(res2026, hist) {
-        if (chart2026Inst) chart2026Inst.destroy();
+        if (assemblyTrendChartInst) assemblyTrendChartInst.destroy();
         if (trendChartInst) trendChartInst.destroy();
         if (asyChartInst) asyChartInst.destroy();
         if (genChartInst) genChartInst.destroy();
 
-        // 2026 Chart
         let aV = { LDF:0, UDF:0, NDA:0 };
         res2026.forEach(c => {
             if(aV[c.alliance] !== undefined) aV[c.alliance] += c.votes;
         });
-        chart2026Inst = new Chart(document.getElementById('chart2026'), {
-            type: 'bar',
-            data: {
-                labels: ['LDF', 'UDF', 'NDA'],
-                datasets: [{
-                    label: 'Votes',
-                    data: [aV.LDF, aV.UDF, aV.NDA],
-                    backgroundColor: [colors.LDF, colors.UDF, colors.NDA],
-                    borderRadius: 4
-                }]
-            },
-            options: { ...commonChartOptions, plugins: { ...commonChartOptions.plugins, legend: {display: false} } }
-        });
 
         const asyData = hist.filter(h => h.election === 'niyamasabha').sort((a, b) => a.year - b.year);
+        // Add 2026 to Assembly Data
+        if (res2026.length > 0) {
+            asyData.push({ year: 2026, election: 'niyamasabha', ldf_votes: aV.LDF, udf_votes: aV.UDF, nda_votes: aV.NDA });
+        }
+
+        // 1. Assembly Trend Chart (Line)
+        assemblyTrendChartInst = new Chart(document.getElementById('assemblyTrendChart'), {
+            type: 'line',
+            data: {
+                labels: asyData.map(h => h.year.toString()),
+                datasets: [
+                    { label: 'LDF', data: asyData.map(h => h.ldf_votes), borderColor: colors.LDF, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+                    { label: 'UDF', data: asyData.map(h => h.udf_votes), borderColor: colors.UDF, tension: 0.4, borderWidth: 3, pointRadius: 4 },
+                    { label: 'NDA', data: asyData.map(h => h.nda_votes), borderColor: colors.NDA, tension: 0.4, borderWidth: 3, pointRadius: 4 }
+                ]
+            },
+            options: commonChartOptions
+        });
+
+        // 2. Assembly Elections History Chart (Bar, includes 2026)
         asyChartInst = new Chart(document.getElementById('assemblyChart'), {
             type: 'bar',
             data: {
@@ -294,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const allData = [...hist].sort((a, b) => a.year - b.year);
-        // Add 2026 to allData
+        // Add 2026 to Combined Trend
         if (res2026.length > 0) {
             allData.push({ year: 2026, election: 'niyamasabha', ldf_votes: aV.LDF, udf_votes: aV.UDF, nda_votes: aV.NDA });
         }
