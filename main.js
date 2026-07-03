@@ -37,4 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
         }
     });
+
+    // Quick Request Form Handler
+    const quickRequestForm = document.getElementById('quickRequestForm');
+    if (quickRequestForm) {
+        quickRequestForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('requestName').value;
+            const org = document.getElementById('requestOrg').value;
+            
+            let message = `Hi, I am interested in training based on your website form.\nMy Name: ${name}`;
+            if (org) {
+                message += `\nOrganization: ${org}`;
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://wa.me/918590010981?text=${encodedMessage}`;
+        });
+    }
 });
