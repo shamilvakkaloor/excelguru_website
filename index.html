@@ -297,7 +297,7 @@
                     <div class="glass-card">
                         <h3>Quick Request</h3>
                         <p style="color: var(--text-muted); margin-bottom: 1rem;">Prefer a call back?</p>
-                        <form id="quickRequestForm">
+                        <form id="quickRequestForm" onsubmit="event.preventDefault(); var name=document.getElementById('requestName').value; var org=document.getElementById('requestOrg').value; var msg='Hi, I am interested in training based on your website form.%0AMy Name: '+encodeURIComponent(name)+(org?'%0AOrganization: '+encodeURIComponent(org):''); window.location.href='https://wa.me/918590010981?text='+msg;">
                             <input type="text" id="requestName" placeholder="Your Name" class="form-input" required>
                             <input type="text" id="requestOrg" placeholder="Organization" class="form-input">
                             <button type="submit" class="btn btn-primary-outline" style="width: 100%">Request
