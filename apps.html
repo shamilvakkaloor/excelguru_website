@@ -186,83 +186,10 @@
 
                 <div class="app-card glass-card p-0">
                     <div class="app-card-header">
-                        <button class="app-btn" id="app1Toggle">
+                        <a href="fest-app.html" class="app-btn" style="text-decoration: none;">
                             ExcelGuru Fest App v1
-                            <span class="toggle-icon">▼</span>
-                        </button>
-                    </div>
-                    <div class="app-content" id="app1Content">
-                        <ul class="resource-list">
-                            <!-- 1. Code Zip File -->
-                            <li class="resource-item">
-                                <div class="resource-info">
-                                    <div class="resource-icon">📁</div>
-                                    <div class="resource-text">
-                                        <h4>Code Zip File</h4>
-                                        <p>Download the complete source code.</p>
-                                    </div>
-                                </div>
-                                <div class="resource-action">
-                                    <a href="app%20tab%20content/ExcelGuru%20Fest%20App%20v1.0.zip" class="btn btn-secondary" download>Download .zip</a>
-                                </div>
-                            </li>
-
-                            <!-- 2. Setup Files (English) -->
-                            <li class="resource-item">
-                                <div class="resource-info">
-                                    <div class="resource-icon">📄</div>
-                                    <div class="resource-text">
-                                        <h4>Setup Guide (English)</h4>
-                                        <p>Step-by-step PDF installation guide in English.</p>
-                                    </div>
-                                </div>
-                                <div class="resource-action">
-                                    <a href="app%20tab%20content/SETUP%20-%20ExcelGuru%20Fest%20App%20v1.0.pdf" class="btn btn-primary-outline" download>Download PDF</a>
-                                </div>
-                            </li>
-
-                            <!-- 3. Setup Files (Malayalam) -->
-                            <li class="resource-item">
-                                <div class="resource-info">
-                                    <div class="resource-icon">📄</div>
-                                    <div class="resource-text">
-                                        <h4>Setup Guide (Malayalam)</h4>
-                                        <p>Step-by-step PDF installation guide in Malayalam.</p>
-                                    </div>
-                                </div>
-                                <div class="resource-action">
-                                    <a href="app%20tab%20content/SETUP%20Malayalam%20-%20ExcelGuru%20Fest%20App%20v1.0.pdf" class="btn btn-primary-outline" download>Download PDF</a>
-                                </div>
-                            </li>
-
-                            <!-- 4. How to setup video -->
-                            <li class="resource-item">
-                                <div class="resource-info">
-                                    <div class="resource-icon">⚙️</div>
-                                    <div class="resource-text">
-                                        <h4>How to Setup</h4>
-                                        <p>Video tutorial on setting up the app.</p>
-                                    </div>
-                                </div>
-                                <div class="resource-action">
-                                    <a href="https://youtu.be/TyDwi1CIMOU" target="_blank" class="btn btn-primary">Watch on YouTube</a>
-                                </div>
-                            </li>
-
-                            <!-- 5. How to use video -->
-                            <li class="resource-item">
-                                <div class="resource-info">
-                                    <div class="resource-icon">▶️</div>
-                                    <div class="resource-text">
-                                        <h4>How to Use</h4>
-                                        <p>Complete video guide on using the application.</p>
-                                    </div>
-                                </div>
-                                <div class="resource-action">
-                                    <a href="https://youtu.be/6vMOvJski3E" target="_blank" class="btn btn-primary">Watch on YouTube</a>
-                                </div>
-                            </li>
-                        </ul>
+                            <span class="toggle-icon">→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -280,26 +207,6 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('app1Toggle');
-            const content = document.getElementById('app1Content');
-            const icon = toggleBtn.querySelector('.toggle-icon');
-
-            toggleBtn.addEventListener('click', () => {
-                content.classList.toggle('active');
-                if (content.classList.contains('active')) {
-                    icon.textContent = '▲';
-                } else {
-                    icon.textContent = '▼';
-                }
-            });
-            
-            // Expand by default
-            content.classList.add('active');
-            icon.textContent = '▲';
-        });
-    </script>
 </body>
 
 </html>
