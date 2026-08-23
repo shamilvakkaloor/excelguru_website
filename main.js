@@ -36,4 +36,5 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.boxShadow = 'none';
             header.style.backgroundColor = 'rgba(15, 23, 42, 0.9)';
         }
+    });
 });
