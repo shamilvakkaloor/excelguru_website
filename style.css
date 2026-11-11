@@ -670,6 +670,62 @@ h6 {
     font-size: 0.9rem;
 }
 
+.footer-support {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-support a {
+    display: inline-block;
+    transition: transform var(--transition-fast, 0.2s ease), filter var(--transition-fast, 0.2s ease);
+}
+
+.footer-support a:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+/* Floating Buy Me a Coffee Button */
+.bmac-floating {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: inline-block;
+    line-height: 0;
+}
+
+.bmac-floating:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.bmac-floating a {
+    display: block;
+    line-height: 0;
+}
+
+.bmac-floating img {
+    border-radius: 10px;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .bmac-floating {
+        bottom: 16px;
+        right: 16px;
+    }
+    .bmac-floating img {
+        height: 48px !important;
+        width: 174px !important;
+    }
+}
+
 
 /* Responsive */
 @media (max-width: 900px) {
